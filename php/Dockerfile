@@ -16,11 +16,11 @@ RUN docker-php-ext-install \
       pdo_mysql
 
 # Xdebugのインストール
-RUN pecl install xdebug
+RUN pecl install xdebug-2.9.8
 RUN docker-php-ext-enable xdebug
 
 # Composerのインストール
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
 # ユーザーを作成
 ARG DOCKER_UID=1000
